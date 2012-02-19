@@ -79,7 +79,7 @@
 }
 
 - (void)andWereDone {
-    [self resetUserDefaults];
+    [[self class] resetUserDefaults];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MBAppStoreRaterDone];
 }
 
@@ -124,7 +124,7 @@
     [defaults setInteger:x + 1 forKey:MBNumberOfTimesAppOpened];
 }
 
-- (void)resetUserDefaults {
++ (void)resetUserDefaults {
     id defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:MBNumberOfTimesAppOpened];
     [defaults removeObjectForKey:MBFirstUseDate];

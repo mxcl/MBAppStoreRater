@@ -75,7 +75,7 @@ either expressed or implied, of the FreeBSD Project.
 /**
  * You should only use this when testing :P
  */
-- (void)resetUserDefaults;
++ (void)resetUserDefaults;
 
 @property (nonatomic, readonly) NSUInteger appStoreID;
 @property (nonatomic, strong, readonly) MBNonIntrusiveAlertView *view;
