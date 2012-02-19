@@ -78,7 +78,7 @@
     return YES;
 }
 
-- (void)andWereDone {
+- (void)andWeAreDone {
     [[self class] resetUserDefaults];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MBAppStoreRaterDone];
 }
@@ -94,7 +94,7 @@
     
     id defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:MBNotNowDate]) {
-        [self andWereDone];
+        [self andWeAreDone];
     } else {
         [defaults setObject:[NSDate date] forKey:MBNotNowDate];
     }
@@ -109,7 +109,7 @@
     // but not before the app animates away in the carousel, looks great.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEnteredBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
-    [self andWereDone];
+    [self andWeAreDone];
 }
 
 - (void)onEnteredBackground {
@@ -156,6 +156,7 @@
         
         UIView *box = [[UIView alloc] initWithFrame:self.bounds];
         box.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        box.opaque = NO;
         
         CAGradientLayer *cg = [CAGradientLayer layer];
         cg.colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor, nil];
@@ -189,8 +190,8 @@
 }
 
 - (void)layoutSubviews {
-    [self centerSubview:yesButton leftOfSubview:nil margin:MBAppStoreRaterMargin1];
-    [self centerSubview:noButton leftOfSubview:yesButton margin:MBAppStoreRaterMargin2];
+    [yesButton.superview centerSubview:yesButton leftOfSubview:nil margin:MBAppStoreRaterMargin1];
+    [noButton.superview centerSubview:noButton leftOfSubview:yesButton margin:MBAppStoreRaterMargin2];
     
     CGRect frame = CGRectInset(self.bounds, 15, 2.5);
     frame = CGRectOffset(frame, 0, 2.5);
