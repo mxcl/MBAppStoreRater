@@ -143,8 +143,8 @@
 @synthesize label;
 
 - (id)initUnderView:(UIView *)uv {
-    CGRect frame = uv.bounds;
-    frame.origin.y = frame.size.height;
+    CGRect frame = uv.frame;
+    frame.origin.y = CGRectGetMaxY(frame);
     frame.size.height = 64;
     
     self = [super initWithFrame:frame];
