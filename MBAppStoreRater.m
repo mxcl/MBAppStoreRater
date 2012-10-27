@@ -159,7 +159,7 @@
         box.opaque = NO;
         
         CAGradientLayer *cg = [CAGradientLayer layer];
-        cg.colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor, nil];
+        cg.colors = @[(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor];
         cg.frame = (CGRect){0, 0, 1024, 10};
         [self.layer addSublayer:cg];
         
@@ -173,8 +173,8 @@
         
         label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.numberOfLines = 0;
-        label.lineBreakMode = UILineBreakModeWordWrap;
-        label.text = [NSString stringWithFormat:@"If you are enjoying %@, would you mind rating it?", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]];;
+        label.lineBreakMode = NSLineBreakByWordWrapping;
+        label.text = [NSString stringWithFormat:@"If you are enjoying %@, would you mind rating it?", [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"]];;
         label.textColor = [UIColor whiteColor];
         label.shadowColor = [UIColor blackColor];
         label.shadowOffset = CGSizeMake(0, 1);
